@@ -1,0 +1,27 @@
+*.class
+
+!**/src/main/**
+!**/src/test/**
+
+/.metadata/
+.DS_Store
+*.DS_Store
+*/.DS_Store
+
+# Package Files #
+*.jar
+*.war
+*.ear
+/target
+/.settings
+*.classpath
+.project
+/target/
+/target/
+/bin/
+*.factorypath
+/.apt_generated/
+.idea/
+*.iml
+*.log
+*env.properties
