@@ -1,4 +1,4 @@
-package com.example.clip.model;
+package com.example.clip.model.entities;
 
 import java.math.BigDecimal;
 import java.util.Date;
