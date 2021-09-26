@@ -2,13 +2,15 @@ package com.example.clip.model.dtos;
 
 import java.math.BigDecimal;
 
-import lombok.Builder;
+import com.example.clip.model.entities.UserEntity;
+import com.example.clip.model.enums.TransactionStatusEnum;
+
 import lombok.Data;
 
-@Builder
 @Data
 public class PaymentDto {
 	private long id;
 	private BigDecimal amount;
-	private long userId;
+	private TransactionStatusEnum status;
+	private UserEntity user;
 }
