@@ -10,5 +10,5 @@ import lombok.Data;
 public class PaymentDto {
 	private long id;
 	private BigDecimal amount;
-	private String userId;
+	private long userId;
 }

@@ -9,6 +9,6 @@ import java.math.BigDecimal;
 @Setter
 public class PaymentRequest {
 
-    String userId;
+    long userId;
     BigDecimal amount;
 }

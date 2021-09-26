@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.clip.model.dtos.DisbursementDto;
 import com.example.clip.model.dtos.ReportDto;
 import com.example.clip.model.dtos.UserDto;
-import com.example.clip.model.entities.Payment;
+import com.example.clip.model.entities.PaymentEntity;
 import com.example.clip.request.PaymentRequest;
 import com.example.clip.service.TransactionService;
 
@@ -30,8 +30,14 @@ public class TransactionController {
 	private TransactionService service;
 
 	@PostMapping(value = "/createPayload")
-	public ResponseEntity<Payment> createPayment(@RequestBody PaymentRequest paymentRequest) {
+	public ResponseEntity<PaymentEntity> createPayment(@RequestBody PaymentRequest paymentRequest) {
 		return new ResponseEntity<>(service.createPayment(paymentRequest), HttpStatus.CREATED);
+	}
+	
+	@GetMapping(value = "/users")
+	public ResponseEntity<List<UserDto>> getAllUsers() {
+		log.info("getting all users with payments");
+		return new ResponseEntity<>(service.getAllUsers(), HttpStatus.OK);
 	}
 
 	@GetMapping(value = "/usersWithPayments")
@@ -40,7 +46,7 @@ public class TransactionController {
 		return new ResponseEntity<>(service.getAllUsersWithPayments(), HttpStatus.OK);
 	}
 
-	@GetMapping(value = "/usersWithPayments/{userId}")
+	@GetMapping(value={"/usersWithPayments/{userId}", "/users/{userId}"})
 	public ResponseEntity<UserDto> getUserById(@PathVariable("userId") long userId) {
 		log.info("getting user with userId:{}", userId);
 		return new ResponseEntity<>(service.getUserById(userId), HttpStatus.OK);
@@ -55,6 +61,12 @@ public class TransactionController {
 	@PostMapping(value = "/disbursementProcess")
 	public ResponseEntity<List<DisbursementDto>> disbursementProcess() {
 		return new ResponseEntity<>(service.disbursementProcess(), HttpStatus.CREATED);
+	}
+	
+	@GetMapping(value = "/payments")
+	public ResponseEntity<List<PaymentEntity>> getPayments() {
+		log.info("getting all users with payments");
+		return new ResponseEntity<>(service.getPayments(), HttpStatus.OK);
 	}
 
 }
