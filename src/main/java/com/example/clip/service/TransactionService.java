@@ -43,15 +43,6 @@ public class TransactionService {
 	}
 	
 	public List<UserDto> getAllUsers(){
-//		TODO initialize in sql file
-		long count = userRepository.count();
-		if(count == 0) {
-			for (int i = 1; i < 10; i++) {
-				UserEntity entity = new UserEntity();
-				entity.setName("name "+i);
-				userRepository.save(entity);
-			}	
-		}
 		List<UserDto> users = new ArrayList<>();
 		for (UserEntity userEntity: userRepository.findAll()) {
 			users.add(UserDto.builder().name(userEntity.getName()).id(userEntity.getId()).build());
